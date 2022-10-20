@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&family=Space+Mono:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Space Mono", monospace;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.35s;
+}
+.lightTitle {
+  font-size: 26px;
+
+  color: #222731;
+}
+.darkTitle {
+  font-size: 26px;
+  color: #ffffff;
+}
+.mode {
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+header div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.App {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.darkp {
+  color: #697c9a;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+}
+.lightp {
+  color: #ffffff;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+}
+.modeimg {
+  position: block;
+  cursor: pointer;
+}
+.imgholder {
+  position: relative;
+}
+
+.modeimg:hover {
+  opacity: 0.5;
+}
