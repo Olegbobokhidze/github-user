@@ -91,6 +91,17 @@ const UserText = styled.p`
     font-size: 16px;
   }
 `;
+const UserText1 = styled.p`
+  font-weight: 400;
+  color: #4b6a9b;
+  color: ${(props) => props.light.textColor};
+  opacity: ${(props) => (props.user.bio === null ? 0.5 : 1)};
+  line-height: 20px;
+  font-size: 13px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
 const UserTextParent = styled.div`
   display: block;
   max-width: 400px;
@@ -189,6 +200,42 @@ const SvgP = styled.p`
   font-weight: 400;
   margin-left: 20px;
 `;
+const SvgP1 = styled.p`
+  color: #4b6a9b;
+  color: ${(props) => props.light.svgColor};
+  opacity: ${(props) => (props.user.location === null ? 0.5 : 1)};
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 20px;
+`;
+const SvgP2 = styled.p`
+  color: #4b6a9b;
+  color: ${(props) => props.light.svgColor};
+  opacity: ${(props) => (props.user.twitter_username === null ? 0.5 : 1)};
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 20px;
+`;
+const SvgP3 = styled.p`
+  color: #4b6a9b;
+  color: ${(props) => props.light.svgColor};
+  opacity: ${(props) => (props.user.company === null ? 0.5 : 1)};
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 20px;
+`;
+const SvgA1 = styled.a`
+  color: #4b6a9b;
+  color: ${(props) => props.light.textColor};
+  opacity: ${(props) => (props.user.blog === "" ? 0.5 : 1)};
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-left: 20px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 const SvgA = styled.a`
   color: #4b6a9b;
   color: ${(props) => props.light.textColor};
@@ -278,7 +325,7 @@ export default function UserInformation({ light, user }) {
       let joined = new Date(user.created_at);
       let date =
         joined.getDate() +
-        ", " +
+        " " +
         joined.toLocaleString("en-us", { month: "short" }) +
         " " +
         joined.getFullYear();
@@ -291,7 +338,7 @@ export default function UserInformation({ light, user }) {
       let joined = new Date(user.created_at);
       let date =
         joined.getDate() +
-        ", " +
+        " " +
         joined.toLocaleString("en-us", { month: "short" }) +
         " " +
         joined.getFullYear();
@@ -314,9 +361,9 @@ export default function UserInformation({ light, user }) {
               {date1()}
             </DisplayHeader>
             <UserTextParent>
-              <UserText light={light}>
+              <UserText1 light={light} user={user}>
                 {user.bio === null ? "Bio is not available" : user.bio}
-              </UserText>
+              </UserText1>
             </UserTextParent>
             <UserConnections light={light}>
               <Repos light={light}>Repos</Repos>
@@ -329,29 +376,33 @@ export default function UserInformation({ light, user }) {
             <SvgDivParent>
               <SvgDiv>
                 <Location fill={locationSvg()} />
-                <SvgP light={light}>
+                <SvgP1 light={light} user={user}>
                   {user.location === null ? "Not available" : user.location}
-                </SvgP>
+                </SvgP1>
               </SvgDiv>
               <SvgDiv>
                 <Blog fill={blogSvg()} />
-                <SvgA light={light} href={user.blog === "" ? "#" : user.blog}>
+                <SvgA1
+                  light={light}
+                  href={user.blog === "" ? "#" : user.blog}
+                  user={user}
+                >
                   {user.blog === "" ? "Not available" : user.blog}
-                </SvgA>
+                </SvgA1>
               </SvgDiv>
               <SvgDiv>
                 <Twitter fill={twitterSvg()} />
-                <SvgP light={light}>
+                <SvgP2 light={light} user={user}>
                   {user.twitter_username === null
                     ? "Not available"
                     : user.twitter_username}
-                </SvgP>
+                </SvgP2>
               </SvgDiv>
               <SvgDiv>
                 <Company fill={companySvg()} />
-                <SvgP light={light}>
+                <SvgP3 light={light} user={user}>
                   {user.company === null ? "Not available" : user.company}
-                </SvgP>
+                </SvgP3>
               </SvgDiv>
             </SvgDivParent>
           </TextHolderDesktop>
